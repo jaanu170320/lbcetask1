@@ -1,0 +1,24 @@
+int Button1 = PC13; // First button connected to pin PC13
+int Button2 = PC14; // Second button connected to pin PC14
+int LED = PA5;      // LED connected to pin PA5
+
+void setup() {
+  pinMode(Button1, INPUT_PULLUP); // Set Button1 as input with internal pull-up resistor
+  pinMode(Button2, INPUT_PULLUP); // Set Button2 as input with internal pull-up resistor
+  pinMode(LED, OUTPUT);            // Set LED pin as output
+
+  Serial.begin(9600); // Initialize serial communication
+  Serial.println("Start");
+}
+
+void loop() {
+  if (digitalRead(Button1) == LOW) {
+    Serial.println("from where "); // Print "Hello" when Button1 is pressed
+    digitalWrite(LED, HIGH); // Turn on LED
+    delay(150); // Debounce delay
+  } else if (digitalRead(Button2) == LOW) {
+    Serial.println("dragggggg"); // Print "Bye" when Button2 is pressed
+    digitalWrite(LED, LOW); // Turn off LED
+    delay(150); // Debounce delay
+  }
+}
